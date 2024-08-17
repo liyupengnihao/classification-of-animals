@@ -294,7 +294,7 @@ namespace 机试_动物分类
         }
 
         /// <summary>
-        /// 存数据进数据库，带完成
+        /// 存数据进数据库，带待完成
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public void EditSQL()
@@ -302,7 +302,7 @@ namespace 机试_动物分类
             throw new NotImplementedException();
         }
         /// <summary>
-        /// 取数据进数据库，带完成
+        /// 取数据进数据库，带待完成
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public void SelectSQL()
