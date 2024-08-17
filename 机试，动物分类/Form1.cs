@@ -22,6 +22,10 @@ namespace 机试_动物分类
         int s = 0;//    天空INI序列
         bool b = true;//    判断接收的信息是否正确
         private SerialPort _serialPort;
+        /// <summary>
+        /// 构造函数 初始化传入的数据
+        /// </summary>
+        /// <param name="serialPort1"></param>
         public Form1(SerialPort serialPort1)
         {
             InitializeComponent();
@@ -49,9 +53,9 @@ namespace 机试_动物分类
             else
                 timer1.Stop();
             _serialPort.Open();
-            if (this._serialPort != null)
+            if (this._serialPort != null)// 检测是否实例化
             {
-                this._serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);//    与接收关联
+                this._serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);//    订阅事件与接收关联
             }
 
             #region 确定INI键的内容l、a、s
@@ -120,7 +124,7 @@ namespace 机试_动物分类
             Application.Exit();
         }
         /// <summary>
-        /// 接收信息 写入到分类格中 写入INI中
+        /// 接收信息事件 写入到分类格中 写入INI中
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -288,5 +292,24 @@ namespace 机试_动物分类
             }
 
         }
+
+        /// <summary>
+        /// 存数据进数据库，带完成
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public void EditSQL()
+        {
+            throw new NotImplementedException();
+        }
+        /// <summary>
+        /// 取数据进数据库，带完成
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public void SelectSQL()
+        {
+        throw new NotImplementedException(); 
+        }
+
+
     }
 }
