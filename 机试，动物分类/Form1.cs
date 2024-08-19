@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.IO.Ports;
@@ -21,6 +23,7 @@ namespace 机试_动物分类
         int a = 0;//    水中INI序列
         int s = 0;//    天空INI序列
         bool b = true;//    判断接收的信息是否正确
+        int ID = 1;
         private SerialPort _serialPort;
         /// <summary>
         /// 构造函数 初始化传入的数据
@@ -53,11 +56,19 @@ namespace 机试_动物分类
             else
                 timer1.Stop();
             _serialPort.Open();
+            //  this为当前类（对象）下的一个实例
             if (this._serialPort != null)// 检测是否实例化
             {
                 this._serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);//    订阅事件与接收关联
+                                                                                                              //  方法_serialPort_DataReceived订阅事件_serialPort.DataReceived
+                                                                                                              //  事件的拥有者_serialPort，事件的成员DataReceived，事件的响应者new SerialDataReceivedEventHandler()这个实例，事件处理器_serialPort_DataReceived，订阅事件this._serialPort.DataReceived += new SerialDataReceivedEventHandler(_serialPort_DataReceived);
             }
 
+            #region 确定主键的序列
+            string sql = "select ID from animalTable";
+            DataTable dt = SQLHelper.SelectSQL(sql);
+            ID+=dt.Rows.Count;//    确定以有动物数量
+            #endregion
             #region 确定INI键的内容l、a、s
             string path = Application.StartupPath+"\\CSV.csv";
             using (StreamReader reader = new StreamReader(path, Encoding.Default))
@@ -124,7 +135,7 @@ namespace 机试_动物分类
             Application.Exit();
         }
         /// <summary>
-        /// 接收信息事件 写入到分类格中 写入INI中
+        /// 接收信息事件 写入到分类格中 写入INI中，写入数据库中
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -161,17 +172,40 @@ namespace 机试_动物分类
                 string[] title = { "时间戳", "陆地动物", "水中动物", "天空动物" };
                 string[] parts = str.Split('：');//  分割信息
                 string[] animal = { DateTime.Now.ToString(), parts[0], parts[1] };//    时间、动物种类、动物名称
-                WriteCSV(path, title, animal);
-                #region 写入界面分类文本中
+                WriteCSV(path, title, animal);//    写入CSV
+
+                #region 写入数据库
                 if (parts[0]=="A")
                 {
-                    textBox2.Text=parts[1]+"\r\n";
+                    string sql = $" insert into animalTable(ID,lanimal) values({ID},'{parts[1]}');";
+                    ID++;
+                    SQLHelper.EditSQL(sql);
                 }
                 else if (parts[0]=="B")
                 {
-                    textBox3.Text=parts[1]+"\r\n";
+                    string sql = $" insert into animalTable(ID,aanimal) values({ID},'{parts[1]}');";
+                    ID++;
+                    SQLHelper.EditSQL(sql);
                 }
                 else
+                {
+                    string sql = $" insert into animalTable(ID,sanimal) values({ID},'{parts[1]}');";
+                    ID++;
+                    SQLHelper.EditSQL(sql);
+                }
+                #endregion
+
+
+                #region 写入界面分类文本中
+                if (parts[0]=="A")//    陆地
+                {
+                    textBox2.Text=parts[1]+"\r\n";
+                }
+                else if (parts[0]=="B")//   水中
+                {
+                    textBox3.Text=parts[1]+"\r\n";
+                }
+                else//  天空
                 {
                     textBox4.Text=parts[1]+"\r\n";
                 }
@@ -241,7 +275,7 @@ namespace 机试_动物分类
         }
 
         /// <summary>
-        /// 读取CSV文件
+        /// 读取CSV文件，读取数据库内容
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -250,15 +284,38 @@ namespace 机试_动物分类
             string path = Application.StartupPath+"\\CSV.csv";
             if (File.Exists(path))
             {
-                
-                using (StreamReader reader = new StreamReader(path,Encoding.Default))
+
+                using (StreamReader reader = new StreamReader(path, Encoding.Default))
                 {
-                    string line = reader.ReadLine();//第一行
-                    string lineOne;
-                    while ((lineOne = reader.ReadLine())!=null)//  第二行开始
+
+                    #region 读取数据库
+                    string sql = "select*from animalTable";
+                    DataTable dt = SQLHelper.SelectSQL(sql);
+                    for (int i = 0; i<dt.Rows.Count; i++)
                     {
-                        
-                        string[] columns = lineOne.Split(',');// 分割每一行  
+                        if (dt.Rows[i]["lanimal"]!=null)//  陆地
+                        {
+                            textBox7.AppendText(dt.Rows[i]["lanimal"].ToString()+"\r\n");
+                        }
+                        else if (dt.Rows[i]["aanimal"]!=null)// 水中
+                        {
+                            textBox7.AppendText(dt.Rows[i]["aanimal"].ToString()+"\r\n");
+                        }
+                        else if (dt.Rows[i]["sanimal"]!=null)// 天空
+                        {
+                            textBox7.AppendText(dt.Rows[i]["sanimal"].ToString()+"\r\n");
+                        }
+                    }
+
+
+                    #endregion
+                    #region 读取CSV文件并打印在textbox6中
+                    string line = reader.ReadLine();//第一行
+                    string lines;
+                    while ((lines = reader.ReadLine())!=null)//  第二行开始
+                    {
+
+                        string[] columns = lines.Split(',');// 分割每一行  
 
                         if (columns.Length > 1) // 从第二行开始
                         {
@@ -288,27 +345,13 @@ namespace 机试_动物分类
                             }
                         }
                     }
+                    #endregion
                 }
             }
 
         }
 
-        /// <summary>
-        /// 存数据进数据库，带待完成
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void EditSQL()
-        {
-            throw new NotImplementedException();
-        }
-        /// <summary>
-        /// 取数据进数据库，带待完成
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public void SelectSQL()
-        {
-        throw new NotImplementedException(); 
-        }
+
 
 
     }

@@ -45,11 +45,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -161,7 +165,7 @@
             this.groupBox5.Size = new System.Drawing.Size(372, 217);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "入驻动物名单";
+            this.groupBox5.Text = "入驻动物名单（读CSV）";
             // 
             // textBox6
             // 
@@ -203,11 +207,30 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "动物类别";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textBox7);
+            this.groupBox6.Location = new System.Drawing.Point(820, 13);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(245, 217);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "入驻动物（读数据库）";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(15, 25);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(224, 186);
+            this.textBox7.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 544);
+            this.ClientSize = new System.Drawing.Size(1077, 544);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
@@ -232,6 +255,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -255,6 +280,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
