@@ -18,7 +18,8 @@ namespace 机试_动物分类
         /// <exception cref="NotImplementedException"></exception>
         public static int EditSQL(string sql)
         {
-            SqlConnection conn = new SqlConnection("Server=loaclhost;Database=animalTable;Trusted_Connection=true");
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString="Server=localhost;Database=animalDatabase;Trusted_Connection=true";
             conn.Open();
             SqlCommand cmd = new SqlCommand(sql, conn);
 
@@ -41,7 +42,7 @@ namespace 机试_动物分类
         /// <exception cref="NotImplementedException"></exception>
         public static DataTable SelectSQL(string sql)
         {
-            SqlConnection conn = new SqlConnection("Server=localhost;Database=animalTable;Trusted_Connection=true");
+            SqlConnection conn = new SqlConnection("Server=localhost;Database=animalDatabase;Trusted_Connection=true;");
             conn.Open();
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter da = new SqlDataAdapter(cmd);

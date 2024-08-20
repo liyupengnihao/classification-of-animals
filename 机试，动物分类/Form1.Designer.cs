@@ -46,8 +46,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -194,7 +194,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(193, 86);
             this.button1.TabIndex = 6;
-            this.button1.Text = "查询分类中全部入驻动物名单";
+            this.button1.Text = "查询分类中全部入驻动物名单，以及数据库中全部的动物";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -215,7 +215,7 @@
             this.groupBox6.Size = new System.Drawing.Size(245, 217);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "入驻动物（读数据库）";
+            this.groupBox6.Text = "入驻的全部动物（读数据库）";
             // 
             // textBox7
             // 

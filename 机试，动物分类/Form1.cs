@@ -23,7 +23,8 @@ namespace 机试_动物分类
         int a = 0;//    水中INI序列
         int s = 0;//    天空INI序列
         bool b = true;//    判断接收的信息是否正确
-        int ID = 1;
+        int ID = 0;
+        int sqlCount = 0;
         private SerialPort _serialPort;
         /// <summary>
         /// 构造函数 初始化传入的数据
@@ -33,6 +34,33 @@ namespace 机试_动物分类
         {
             InitializeComponent();
             _serialPort = serialPort1;//    构造函数接收值后赋予字段    两个界面用的是同一个实例
+        }
+        /// <summary>
+        /// 确定Csv的行数
+        /// </summary>
+        /// <param name="filePath">文件路径</param>
+        /// <returns></returns>
+        static int CountCsvRows(string filePath)
+        {
+            int rowCount = 0;
+
+            try
+            {
+                using (StreamReader reader = new StreamReader(filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        rowCount++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"读取文件时发生错误: {ex.Message}");
+            }
+
+            return rowCount;
         }
         /// <summary>
         /// 时间控件
@@ -67,7 +95,60 @@ namespace 机试_动物分类
             #region 确定主键的序列
             string sql = "select ID from animalTable";
             DataTable dt = SQLHelper.SelectSQL(sql);
-            ID+=dt.Rows.Count;//    确定以有动物数量
+            ID+=dt.Rows.Count;//    确定数据库中动物数量
+            #endregion
+            #region 与CSV文件同步
+            string pathOne = Application.StartupPath+"\\CSV.csv";
+            if (File.Exists(pathOne))
+            {
+                using (StreamReader sr = new StreamReader(pathOne, Encoding.Default))// 会自动释放，不用close
+                {
+                    if (ID<CountCsvRows(pathOne)-1)//   有标题要减一
+                    {
+                        string line = sr.ReadLine();//CSV第一行
+                        string lines;
+                        int counts=0;
+                        int IDOne = ID;
+                        while ((lines = sr.ReadLine())!=null)//  第二行开始
+                        {
+                            if (counts<IDOne)//   去除CSV中的旧内容
+                            {
+                                counts++;
+                            }
+                            else
+                            {
+                                string[] columns = lines.Split(',');// 分割每一行  
+
+                                if (columns.Length > 1) // 行内有数据
+                                {
+                                    if (!string.IsNullOrEmpty(columns[1].ToString()))//空或null返回true
+                                    {
+                                        string secondColumnValue = columns[1].ToString();//  第二列的数据
+                                        string sqlOne = $"insert into animalTable(ID,lanimal,aanimal,sanimal)values({ID+1},'{columns[1].ToString()}','','');";
+                                        sqlCount+=SQLHelper.EditSQL(sqlOne);
+                                       
+                                    }
+                                    else if (!string.IsNullOrEmpty(columns[2].ToString()))
+                                    {
+                                        string threeColumnValue = columns[2].ToString();
+                                        string sqlOne = $"insert into animalTable(ID,lanimal,aanimal,sanimal)values({ID+1},'','{columns[2].ToString()}','');";
+                                        sqlCount+=SQLHelper.EditSQL(sqlOne);
+                                       
+                                    }
+                                    else if (!string.IsNullOrEmpty(columns[3].ToString()))
+                                    {
+                                        string fourColumnValue = columns[3].ToString();
+                                        string sqlOne = $"insert into animalTable(ID,lanimal,aanimal,sanimal)values({ID+1},'','','{columns[3].ToString()}');";
+                                        sqlCount +=SQLHelper.EditSQL(sqlOne);
+                                   
+                                    }
+                                }
+                                ID++;
+                            }
+                        }          
+                    }
+                }
+            }
             #endregion
             #region 确定INI键的内容l、a、s
             string path = Application.StartupPath+"\\CSV.csv";
@@ -293,15 +374,15 @@ namespace 机试_动物分类
                     DataTable dt = SQLHelper.SelectSQL(sql);
                     for (int i = 0; i<dt.Rows.Count; i++)
                     {
-                        if (dt.Rows[i]["lanimal"]!=null)//  陆地
+                        if (dt.Rows[i]["lanimal"].ToString()!="")//  陆地
                         {
                             textBox7.AppendText(dt.Rows[i]["lanimal"].ToString()+"\r\n");
                         }
-                        else if (dt.Rows[i]["aanimal"]!=null)// 水中
+                        else if (dt.Rows[i]["aanimal"].ToString()!="")// 水中
                         {
                             textBox7.AppendText(dt.Rows[i]["aanimal"].ToString()+"\r\n");
                         }
-                        else if (dt.Rows[i]["sanimal"]!=null)// 天空
+                        else if (dt.Rows[i]["sanimal"].ToString()!="")// 天空
                         {
                             textBox7.AppendText(dt.Rows[i]["sanimal"].ToString()+"\r\n");
                         }
@@ -350,9 +431,5 @@ namespace 机试_动物分类
             }
 
         }
-
-
-
-
     }
 }
