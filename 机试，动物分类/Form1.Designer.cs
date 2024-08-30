@@ -165,7 +165,7 @@
             this.groupBox5.Size = new System.Drawing.Size(372, 217);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "入驻动物名单（读CSV）";
+            this.groupBox5.Text = "入驻动物分类查询（读CSV）";
             // 
             // textBox6
             // 
