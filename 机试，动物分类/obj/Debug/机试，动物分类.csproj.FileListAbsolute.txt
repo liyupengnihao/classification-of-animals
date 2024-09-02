@@ -22,3 +22,15 @@ D:\C#入门学习\机试\机试，动物分类\obj\Debug\机试，动物分类.c
 D:\C#入门学习\机试\机试，动物分类\obj\Debug\机试，动物分类.csproj.CoreCompileInputs.cache
 D:\C#入门学习\机试\机试，动物分类\obj\Debug\机试，动物分类.exe
 D:\C#入门学习\机试\机试，动物分类\obj\Debug\机试，动物分类.pdb
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\bin\Debug\机试，动物分类.exe.config
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\bin\Debug\机试，动物分类.exe
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\bin\Debug\机试，动物分类.pdb
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.csproj.AssemblyReference.cache
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试_动物分类.Form1.resources
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试_动物分类.log_on.resources
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试_动物分类.PortMessage.resources
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试_动物分类.Properties.Resources.resources
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.csproj.GenerateResource.cache
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.csproj.CoreCompileInputs.cache
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.exe
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.pdb

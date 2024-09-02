@@ -38,46 +38,53 @@ namespace 机试_动物分类
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            if(comboBox1.Text!=""&&comboBox2.Text!=""&&comboBox3.Text!=""&&comboBox4.Text!=""&&comboBox5.Text!="")
+
+            while (_b)
             {
-                serialPort1.PortName = comboBox1.Text;
-                serialPort1.BaudRate=Convert.ToInt32(comboBox2.Text);
-                switch(comboBox3.Text)
-                {
-                    case "NONE":
-                        serialPort1.Parity=Parity.None;
-                        break;
-                    case "ODD":
-                        serialPort1.Parity=Parity.Odd;
-                        break;
-                    case "EVEN":
-                        serialPort1.Parity=Parity.Even;
-                        break;
-                }
-                serialPort1.DataBits=int.Parse(comboBox4.Text);
-                switch(int.Parse(comboBox5.Text))// 文本
-                {
-                    case 1:
-                        serialPort1.StopBits=StopBits.One;
-                        break;
-                    case 2:
-                        serialPort1.StopBits=StopBits.Two;
-                        break;
-                }
-                while (_b)
-                {
-                    this.Hide();
-                    Form1 form = new Form1(serialPort1);//  通过构造函数传值
-                    form.ShowDialog();
-                    _b=false;
-                }
+                this.Hide();
+                Form1 form = new Form1();
+                form.ShowDialog();
+                _b=false;
             }
-            else
-            {
-                MessageBox.Show("请填完信息");
-            }
+
+            #region 构造函数传参的版本
+            //serialPort1.PortName = comboBox1.Text;
+            //serialPort1.BaudRate=Convert.ToInt32(comboBox2.Text);
+            //switch (comboBox3.Text)
+            //{
+            //    case "NONE":
+            //        serialPort1.Parity=Parity.None;
+            //        break;
+            //    case "ODD":
+            //        serialPort1.Parity=Parity.Odd;
+            //        break;
+            //    case "EVEN":
+            //        serialPort1.Parity=Parity.Even;
+            //        break;
+            //}
+            //serialPort1.DataBits=int.Parse(comboBox4.Text);
+            //switch (int.Parse(comboBox5.Text))// 文本
+            //{
+            //    case 1:
+            //        serialPort1.StopBits=StopBits.One;
+            //        break;
+            //    case 2:
+            //        serialPort1.StopBits=StopBits.Two;
+            //        break;
+            //}
+
+
+            ////打开窗口并传参
+            //while (_b)
+            //{
+            //    this.Hide();
+            //    Form1 form = new Form1(serialPort1);//  通过构造函数传值
+            //    form.ShowDialog();
+            //    _b=false;
+            //}
+            #endregion
         }
 
-        
+
     }
 }

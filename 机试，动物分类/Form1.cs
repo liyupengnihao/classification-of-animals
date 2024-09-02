@@ -29,11 +29,14 @@ namespace 机试_动物分类
         /// <summary>
         /// 构造函数 初始化传入的数据
         /// </summary>
-        /// <param name="serialPort1"></param>
-        public Form1(SerialPort serialPort1)
+        /// <param name="serialPort1">构造函数传参时的参数</param>
+        public Form1()
         {
             InitializeComponent();
-            _serialPort = serialPort1;//    构造函数接收值后赋予字段    两个界面用的是同一个实例
+            //_serialPort = serialPort1;//    构造函数接收值后赋予字段    两个界面用的是同一个实例
+            ////改为单例使用
+            InstanceClass instance = InstanceClass.GetInstance();
+            _serialPort=instance.GetParams();//instance.GetParams()返回为一个SerialPort的实例
         }
         /// <summary>
         /// 确定Csv的行数
@@ -83,7 +86,9 @@ namespace 机试_动物分类
                 timer1.Start();
             else
                 timer1.Stop();
-            _serialPort.Open();
+
+         
+            _serialPort.Open();//打开串口
             //  this为当前类（对象）下的一个实例
             if (this._serialPort != null)// 检测是否实例化
             {
@@ -242,8 +247,8 @@ namespace 机试_动物分类
             }
             if (b)
             {
-                _serialPort.WriteLine("please input right's format :    animal's sort：animal's name");//  format(格式)  sort(分类)
-                _serialPort.WriteLine(" ：   is chinese symbol       animal's sort：A    Land Animals 、B    Aquatic Animals 、C   Sky Animals");
+                _serialPort.WriteLine("please input right's format     animal's sort  colon  animal's name");//  format(格式)  sort(分类)
+                _serialPort.WriteLine(" colon   is chinese symbol       animal's sort  A    Land Animals  B    Aquatic Animals  C   Sky Animals");
 
             }
             else

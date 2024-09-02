@@ -47,7 +47,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -165,7 +164,7 @@
             this.groupBox5.Size = new System.Drawing.Size(372, 217);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "入驻动物分类查询（读CSV）";
+            this.groupBox5.Text = "入驻动物分类查询（读日志）";
             // 
             // textBox6
             // 
@@ -282,7 +281,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox7;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
