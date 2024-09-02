@@ -64,10 +64,22 @@
     <Compile Include="PortMessage.Designer.cs">
       <DependentUpon>PortMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="PortOrSocket.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="singletonClass.cs">
+    <Compile Include="SingletonClass%28Socket%29.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="singletonClass（Port）.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SocketMessage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SocketMessage.Designer.cs">
+      <DependentUpon>SocketMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="SQLHelper.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -89,6 +101,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SocketMessage.resx">
+      <DependentUpon>SocketMessage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

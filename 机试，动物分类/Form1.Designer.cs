@@ -47,12 +47,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -60,7 +63,7 @@
             this.textBox1.Location = new System.Drawing.Point(13, 513);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(775, 25);
+            this.textBox1.Size = new System.Drawing.Size(1046, 25);
             this.textBox1.TabIndex = 0;
             // 
             // timer1
@@ -72,7 +75,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(693, 513);
+            this.checkBox1.Location = new System.Drawing.Point(970, 515);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(89, 19);
             this.checkBox1.TabIndex = 1;
@@ -92,7 +95,6 @@
             // 
             // textBox2
             // 
-            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(7, 25);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -111,7 +113,6 @@
             // 
             // textBox4
             // 
-            this.textBox4.Enabled = false;
             this.textBox4.Location = new System.Drawing.Point(6, 25);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -130,7 +131,6 @@
             // 
             // textBox3
             // 
-            this.textBox3.Enabled = false;
             this.textBox3.Location = new System.Drawing.Point(12, 24);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
@@ -224,11 +224,30 @@
             this.textBox7.Size = new System.Drawing.Size(224, 186);
             this.textBox7.TabIndex = 0;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textBox8);
+            this.groupBox7.Location = new System.Drawing.Point(820, 237);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(245, 263);
+            this.groupBox7.TabIndex = 9;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "通讯连接信息";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(7, 25);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(232, 232);
+            this.textBox8.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1077, 544);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
@@ -256,6 +275,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,6 +302,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox textBox8;
     }
 }
 

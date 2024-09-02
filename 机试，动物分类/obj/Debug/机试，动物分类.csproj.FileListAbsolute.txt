@@ -34,3 +34,4 @@ D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分�
 D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.csproj.CoreCompileInputs.cache
 D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.exe
 D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试，动物分类.pdb
+D:\C#入门学习\拉取版机试\classification-of-animals\机试，动物分类\obj\Debug\机试_动物分类.SocketMessage.resources
